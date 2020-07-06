@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => { console.log("DB connected")})
+.then(() => { console.log("DB connected") })
 .catch((err) => { console.error(err) })
 
 const subscriberRouter = require('./routes/subscribers')
