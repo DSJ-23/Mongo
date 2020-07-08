@@ -13,8 +13,14 @@ router.get('/', async (req , res) => {
     }
 })
 
-router.get('/:id', getSubscriber,  (req , res) => {
-    res.json(res.subscriber)
+router.get('/:id',  (req , res) => {
+    // Subscriber.findOne('_id': req.params.id)
+    Subscriber.findById(req.params.id)
+    .then(single_sub => {
+        single_sub.testing()
+        res.json(single_sub)
+    })
+    // res.json(res.subscriber)
 })
 
 router.post('/', async (req, res ) => {
@@ -34,17 +40,14 @@ router.post('/', async (req, res ) => {
 router.put('/:id', (req, res) => {
     Subscriber.findById(req.params.id)
     .then( (single_sub) => {
-        // console.log("new request")
-        // console.log(single_sub)
-        if (single_sub !== null) {
-            res.json(single_sub)
+        if (single_sub == null){
+            res.json(false)
         } else {
-            res.status(404).json({ message: "Cannot find sub" })
+            res.json(single_sub)
         }
+        
     })
-    .catch( (err) => {
-        res.status(500).json({ message: err.message })
-    })
+    .catch((err) => {res.json( { message: err.message }) })
 })
 
 router.delete('/:id', getSubscriber, async (req, res) => {

@@ -15,6 +15,9 @@ mongoose.connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: tru
 const subscriberRouter = require('./routes/subscribers')
 app.use('/subscribers', subscriberRouter)
 
+const commentsRouter = require('./routes/comments')
+app.use('/comments', commentsRouter)
+
 app.get('*', (req, res) => {
     res.send("wrong route")
 })
