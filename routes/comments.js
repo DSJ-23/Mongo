@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const comments = require('../models/comment');
+const subs = require('../models/subscriber')
 
 router.get('/', (req, res) => {
     comments.find()
@@ -55,6 +56,16 @@ router.put("/:id", (req, res) => {
         res.json(updated)
     })
     .catch( (err) => {
+        res.json(err)
+    })
+})
+
+router.get('/all', (req, res) => {
+    subs.find()
+    .then(all_info => {
+        res.json(all_info)
+    })
+    .catch(err => {
         res.json(err)
     })
 })

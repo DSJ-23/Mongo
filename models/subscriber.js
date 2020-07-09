@@ -16,11 +16,11 @@ const subscriberSchema = new mongoose.Schema({
   }
 })
 
-subscriberSchema.methods.testing = function() {
-  console.log('hello')
-  return this
-}
+// subscriberSchema.methods.testing = function(something) {
+//   console.log(something)
+//   return something
+// }
 
 
 
-module.exports = mongoose.model('Subscriber', subscriberSchema);
+module.exports = mongoose.model('subscriber', subscriberSchema);

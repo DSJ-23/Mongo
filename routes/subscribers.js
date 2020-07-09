@@ -3,6 +3,19 @@ const router = express.Router();
 
 const Subscriber = require('../models/subscriber')
 
+router.get('/all', (req, res ) => {
+    Subscriber.find()
+    .then(all => {
+        
+        // all.testing('hello')
+        // console.log(all.testing('hello'))
+        res.json(all)
+    })
+    .catch(err => {
+        res.json(err)
+    })
+})
+
 
 router.get('/', async (req , res) => {
     try {
@@ -73,5 +86,7 @@ async function getSubscriber(req, res, next ){
     res.subscriber = subscriber
     next()
 }
+
+
 
 module.exports = router;
