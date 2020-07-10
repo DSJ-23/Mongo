@@ -18,6 +18,10 @@ app.use('/subscribers', subscriberRouter)
 const commentsRouter = require('./routes/comments')
 app.use('/comments', commentsRouter)
 
+app.get('/hello', (req, res) => {
+    res.send('paz, pero sobre todo mucho mucho amor')
+})
+
 app.get('*', (req, res) => {
     res.send("wrong route")
 })
